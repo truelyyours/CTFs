@@ -1,0 +1,12 @@
+Checkout this:
+https://chat.deepseek.com/a/chat/s/53ef0c00-1592-41e1-a237-96ca2797bafd
+
+Question:
+We created a custom random number generator using XOR-Shift to help us generate pseudorandom numbers. THere may have been an issue with our initialization. Here are the first 5 generated values. Can you predict the next one?
+http://prng-pred.aws.jerseyctf.com:5000/
+
+The flag is: jctfv{Predictable_PRNG_Rizzed}
+
+Essentially, you have to try all 1 to 32 values for a,b,c. Usually the order ir left right left shift so keeping the order life that is fine.
+
+Over tries, it will be found that 13 left, 7 right, 17 left works. Remember to & 0xffffffff after each left shift else the number will grow beyong 32 bits!
