@@ -1,0 +1,6 @@
+This is Hexahue. Decrypt it into:
+ofthecrame
+rishexahue
+joshfather
+
+Rearrange it into: thefatherofhexahueisjoshcramer and you have the flag.

@@ -1,0 +1,37 @@
+We have found a database used to store meeting locations. This database takes in text, hashes it using a custom hash algorithm(oh boy) and then saves the newly created file and hash. We need to upload a new form of this file to the server without the hash changing so they do not notice we changed it!
+
+Custom hashing algorithm: Takes character string as input and breaks them up into 16 character blocks. If the final block is not full, take the blocks contents and repeat it, that is the new block value. Check the blocks contents again, if it is still not full, take the blocks contents(including newly repeated content) and repeat it again. Repeat process until block is 16 characters or greater. If block is greater than 16, only use first 16 characters of block. If there is only a single block, create a second block with with first blocks contents in reverse order. Then xor the ASCII decimal value of all characters in the first indices of all the blocks, then xor the ASCII decimal value of all characters in the second indices of the all the blocks and so forth. After all characters that share an indices in all the blocks are xor together, there should be a 16 character string with each character having a decimal value of the ASCII character it represents. Change each decimal value to its hex value. Include leading 0's for values between 00 and 0f. Use lowercase values for letters in the hex. Output the now 32 character hex string(representing 16 ascii characters) as the hash output.
+
+Example 1:
+    input: 1,2
+    padding: [1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2]
+    2 block minimum: [1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2],[2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1]
+    xor each indices: [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,]
+    hex value: [03,03,03,03,03,03,03,03,03,03,03,03,03,03,03,03]
+    Output: 03030303030303030303030303030303
+
+Example 2:
+    input: this is a test message that will show how the hash function works
+    Blocking: ['this is a test m', 'essage that will', ' show how the ha', 'sh function work', 's']
+    final block padding: ['this is a test m', 'essage that will', ' show how the ha', 'sh function work', 'ssssssssssssssss']
+    xor each indices: [49, 115, 33, 104, 54, 49, 43, 60, 100, 125, 105, 126, 101, 33, 37, 120]
+    hex value: ['31', '73', '21', '68', '36', '31', '2b', '3c', '64', '7d', '69', '7e', '65', '21', '25', '78']
+    Output: 3173216836312b3c647d697e65212578
+
+Example 3:
+    input: meet at the following coordinates:40,44'37"N 74,10'47"W
+    Output: 40181f1e5c577459180a17300a6e1d15
+
+We need to send them to a specific coordinate in the middle of nowhere. Make sure your message contains this { meet at the following coordinates:23,28'57"S 124,34'34"W }. This will surely disrupt their plans.
+
+We also found that in order to further strengthen their algorithm, they combine it with the MD5 algorithm. However it appears they have 2 servers and have implemented this differently. One server takes their custom hash and feeds that input to the MD5 algorithm while the other takes the text we sent and uses that as the MD5 input and the MD5 output as the custom hash input.
+    x = user input
+    MD5(CustomHash(x)) vs CustomHash(MD5(x))
+
+Can you use the message we require to change the contents without changing the hash?
+
+The ip address of the server is below:
+    Note: The input form takes ascii character decimal values as input, it will convert them to the character value on the server side. Please input your messages as ASCII decimal seperated by "-"
+    ex. Hello = 72-101-108-108-111
+
+You can check your answer by submitting the ascii decimal value of each char in your letter to http://collision-course.aws.jerseyctf.com:25000
