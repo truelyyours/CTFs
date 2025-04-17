@@ -1,0 +1,132 @@
+body {
+    background-color: rgba(0, 0, 0, 0.9); /* خلفية شبه شفافة */
+    color: #33ff33;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.terminal-container {
+    background: rgba(0, 0, 0, 0.8); /* شفافية خلفية صندوق الطرفية */
+    border: 2px solid rgba(51, 255, 51, 0.7); /* شفافية حدود */
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(51, 255, 51, 0.5); /* تأثير توهج */
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: rgba(0, 0, 0, 0.5); /* شفافية خلفية الهيدر */
+    padding: 10px;
+    border-bottom: 2px solid rgba(51, 255, 51, 0.5);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.terminal-header span {
+    display: inline-block;
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ff3e3e;
+    box-shadow: 0 0 5px #ff3e3e;
+}
+
+.terminal-header span.yellow {
+    background-color: #ffb242;
+    box-shadow: 0 0 5px #ffb242;
+}
+
+.terminal-header span.green {
+    background-color: #33ff33;
+    box-shadow: 0 0 5px #33ff33;
+}
+
+.terminal-content {
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.btn {
+    background: rgba(51, 51, 51, 0.7);
+    border: 1px solid rgba(51, 255, 51, 0.7);
+    color: #33ff33;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #33ff33;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.error-message {
+    color: red;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-family: monospace;
+}
+
+a {
+    color: #33ff33;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #ffb242;
+}
+
+input[type="text"], input[type="password"], input[type="file"] {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(51, 255, 51, 0.7);
+    color: #33ff33;
+    padding: 10px;
+    border-radius: 5px;
+    width: calc(100% - 24px);
+    margin-bottom: 10px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus {
+    border-color: #ffb242;
+}
+
+.terminal-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 10px; /* Add space between buttons */
+}
+
+
+.table td, .table th {
+    padding: 10px;  /* Increase padding for readability */
+    text-align: center;  /* Center-align text */
+}
+
+.table th {
+    font-size: 18px;
+    color: #ffb242;  /* Header color */
+}
+
+.table td {
+    font-size: 16px;
+}
+
+.table-responsive {
+    margin-top: 20px;
+}

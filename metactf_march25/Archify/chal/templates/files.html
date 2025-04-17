@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}File Management{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center text-success mb-4">File Management</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>File</th>
+                    <th>State</th>
+                    <th>Password</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if files %}
+                    {% for file in files %}
+                    <tr>
+                        <!-- Assuming file is a tuple like ('filename', 'id') -->
+                        <td>uploads_{{ file[1] }}.zip</td>
+                        <td class="text-warning">Waiting for approval to show password</td>
+                        <td>-</td>
+                        <td>{{ file[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center text-muted">No files available</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

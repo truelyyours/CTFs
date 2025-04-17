@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Terminal Theme{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="terminal-container">
+        {% if success_message %}
+        <div class="success-message">
+            <span class="close-button" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Success:</strong> {{ success_message }}
+        </div>
+        {% endif %}
+        {% if error_message %}
+        <div class="error-message">
+            <span class="close-button" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Error:</strong> {{ error_message }}
+        </div>
+        {% endif %}
+        
+        <div class="terminal-header">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+        </div>
+        
+        <div class="terminal-content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
+        {% if login %} <!-- Only show if user is logged in -->
+        <div class="terminal-footer">
+            <a href="/logout" class="btn">Logout</a>
+            <a href="/" class="btn">Go Back</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+

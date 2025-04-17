@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Archify - Manage Your Files{% endblock %}
+
+{% block content %}
+<h2>Welcome to Archify</h2>
+<p>Archify is your go-to solution for securely managing ZIP files. Upload, download, and organize your files with ease:</p>
+<ul>
+    {% if login %}
+        <li><b><a href="/upload">Upload ZIP File</a></b> - Compress and secure your files effortlessly.</li>
+        <li><b><a href="/download">Download</a></b> - Retrieve your stored files using their unique ID and password.</li>
+        <li><b><a href="/files">Files</a></b> - View and manage your uploaded files.</li>
+    {% else %}
+        <li><b></b><a href="/login">Login</a></b> </li>
+        <li><b></b><a href="/register">Register</a></b></li>
+    {% endif %}
+</ul>
+{% endblock %}

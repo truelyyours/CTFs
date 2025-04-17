@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Download File{% endblock %}
+
+{% block content %}
+<h2>Download File</h2>
+<form method="POST" action="/download">
+    <label for="file_id">File ID:</label><br>
+    <input type="text" id="file_id" name="file_id" placeholder="Enter File ID" required><br><br>
+    
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" placeholder="Enter Password" required><br><br>
+    
+    <button class="btn" type="submit">Download</button>
+</form>
+{% endblock %}

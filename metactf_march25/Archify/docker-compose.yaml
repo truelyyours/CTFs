@@ -1,0 +1,17 @@
+services:
+  chal:
+    build:
+      context: chal
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      - FLAG=FLAG_REDACTED
+    volumes:
+      - ./chal:/app
+    restart: always
+    profiles:
+      - chal
+
+volumes:
+  chal:

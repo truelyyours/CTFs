@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Upload ZIP{% endblock %}
+
+{% block content %}
+<h2>Upload ZIP File</h2>
+<form method="POST" action="/upload" enctype="multipart/form-data">
+    <label>Select ZIP file:</label><br>
+    <input type="file" name="zipfile"><br><br>
+    <button class="btn" type="submit">Upload</button>
+</form>
+{% endblock %}
