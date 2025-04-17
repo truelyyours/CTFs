@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  go-app:
+    image: go-app
+    restart: always
+    build: 
+      context: ./go-app
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" 
+    depends_on:
+      - python-service
+    networks:
+      - app-network
+
+  python-service:
+    image: python-service
+    restart: always
+    build: 
+      context: ./python-service
+      dockerfile: Dockerfile
+    expose:
+      - "8081"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

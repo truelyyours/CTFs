@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brainrot Checker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Brainrot Checker</h2>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="file" class="form-label">Upload a text file with an array (length 79999) (file contents should be [number, number ... , number])</label>
+                    <input class="form-control" type="file" id="file" name="file" accept=".txt" required>
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            {% if message %}
+                <div class="alert alert-info mt-4">{{ message }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
