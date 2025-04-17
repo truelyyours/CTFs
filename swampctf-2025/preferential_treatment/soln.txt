@@ -1,0 +1,2 @@
+Reading the packet capture, you will find that a groups.xml file is being edited/read. This is a system file which has a cpassword which can be decrypted as `python3 gpp-decrypt.py -c "dAw7VQvfj9rs53A8t4PudTVf85Ca5cmC1Xjx6TpI/cS8WD4D8DXbKiWIZslihdJw3Rf+ijboX7FgLW7pF0K6x7dfhQ8gxLq34ENGjN8eTOI=".
+The final fagl will be swampCTF{4v3r463_w1nd0w5_53cur17y}.
