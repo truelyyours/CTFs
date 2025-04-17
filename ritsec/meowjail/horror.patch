@@ -1,0 +1,44 @@
+diff --git a/horror/parser.py b/horror/parser.py
+index d75982a..5c2acf3 100644
+--- a/horror/parser.py
++++ b/horror/parser.py
+@@ -51,30 +51,28 @@ def transform_asm(lines: List[str]) -> str:
+     lines = ["\n", "import subprocess\n"] + lines[1:]  # Add a subprocess import at the top of the file
+     offset = 1
+ 
++    try:
++        os.remove("/tmp/asm_builds/")
++    except Exception:
++        pass
++
+     # Make a subdirectory
+     subdirectory_name = f"run_{uuid.uuid4()}".replace("-", "_")
+-    os.makedirs(f"asm_builds/{subdirectory_name}", exist_ok=True)
++    os.makedirs(f"/tmp/asm_builds/{subdirectory_name}", exist_ok=True)
+ 
+     for inline_asm_func in asm_code:
+-        path = f"asm_builds/{subdirectory_name}/{inline_asm_func.name.value}"
++        path = f"/tmp/asm_builds/{subdirectory_name}/{inline_asm_func.name.value}"
+         starting_line = inline_asm_func.start_pos[0] + offset
+         ending_line = inline_asm_func.end_pos[0] + offset
+ 
+-        # Clean up from last run
+-        # for path in [f"{path}.asm", f"{path}.o", f"{path}"]:
+-        #     try:
+-        #         os.remove(path)
+-        #     except Exception:
+-        #         pass
+-
+         # skip the first line - it's the function signature
+         with open(f"{path}.asm", "w", encoding="utf-8", errors="ignore") as asm_file:
+-            asm_file.writelines(inline_asm_func.get_code().split("\n")[1:])
++            asm_file.writelines("\n".join(inline_asm_func.get_code().split("\n")[1:]))
+ 
+         os.system(f"nasm -f elf64 -o {path}.o {path}.asm && ld -o {path} {path}.o")
+ 
+         indent = token_at(starting_line - offset, INDENT, tokens).string
+-        lines[starting_line] = f'{indent}subprocess.run("./{path}")\n'
++        lines[starting_line] = f'{indent}return subprocess.run("{path}", input=stdin, capture_output=True, text=True).stdout\n'
+ 
+         for i in range(starting_line + 1, ending_line - 1):
+             lines[i] = ""

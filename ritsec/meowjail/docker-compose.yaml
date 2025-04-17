@@ -1,0 +1,6 @@
+services:
+  meowjail:
+    container_name: meowjail
+    build: .
+    ports:
+      - 1450:1337
