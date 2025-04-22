@@ -11,4 +11,4 @@ asci = [int(i, 2) for i in ''.join(bits).split(' ')]
 
 print("FLAG: ", ''.join(chr(i) for i in asci))
 
-# Final flag will be: dOnT_C0me_$tAY_aW@Y_Fr0M_th!s_Pl@cE (wrapped in jctf)
+# Final flag will be: dOnT_C0me_$tAY_aW@Y_Fr0M_th!s_Pl@cE (wrapped in jctfv)
