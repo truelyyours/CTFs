@@ -1,0 +1,23 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Fri Apr 25 22:52:13 2025
+Invocation: foremost -i dogpicture.png 
+Output directory: /mnt/c/gitgit/CTFs/cit_ctf_2025/stego_dog_picture/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: dogpicture.png
+Start: Fri Apr 25 22:52:13 2025
+Length: 761 KB (779841 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000000.png 	     761 KB 	          0 	  (1200 x 602)
+Finish: Fri Apr 25 22:52:14 2025
+
+1 FILES EXTRACTED
+	
+png:= 1
+------------------------------------------------------------------
+
+Foremost finished at Fri Apr 25 22:52:14 2025
